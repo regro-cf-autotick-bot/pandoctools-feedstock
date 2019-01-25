@@ -12,6 +12,7 @@ source:
 build:
   # noarch: python
   number: 2
+  skip: True  # [py2k]
   entry_points:
     - cat-md = pandoctools.cat_md.cat_md:cli
     - pandoctools = pandoctools.cli.cli:pandoctools
