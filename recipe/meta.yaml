@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "1.4.1" %}
+{% set version = "1.4.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 64de3aa13fbdab4188279e9e8197099ad3e3f820d80f0fbe6b6de7d579561f91
+  sha256: 056252491dfd96ae971b5b78966b5c3b8e2b82e3e00fc602f98fc5e620632f28
 
 build:
-  # noarch: python
-  number: 2
-  skip: True  # [py2k]
+  noarch: python
+  number: 0
   entry_points:
     - cat-md = pandoctools.cat_md.cat_md:cli
     - pandoctools = pandoctools.cli.cli:pandoctools
@@ -22,11 +21,10 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
     - python >=3.6
-    - conda >=4.5.4
     - pip >=10.0.1
     - setuptools
     - click
@@ -40,22 +38,11 @@ requirements:
     - shortcutter >=0.1.15
     - pandoc-crossref
     - pandoc >=2.5
-    - posix  # [win]
+    - numpy
 
 test:
   imports:
     - pandoctools
-    - pandoctools.cat_md
-    - pandoctools.cli
-    - pandoctools.pandoc_filter_arg
-    - pandoctools.pandoctools_resolve
-    - pandoctools.shared_vars
-  commands:
-    - bash --help
-    - cat-md --help
-    - pandoctools --help
-    - pandoc-filter-arg --help
-    - pandoctools-resolve --help
 
 about:
   home: https://github.com/kiwi0fruit/pandoctools
