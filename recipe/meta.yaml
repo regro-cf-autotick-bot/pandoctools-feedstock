@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "1.4.3" %}
+{% set version = "1.4.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 056252491dfd96ae971b5b78966b5c3b8e2b82e3e00fc602f98fc5e620632f28
+  sha256: 2ee509310b667db98111a97af99b4ff88fe36aed91511620bc46be0827f2f704
 
 build:
   noarch: python
@@ -17,6 +17,7 @@ build:
     - pandoctools = pandoctools.cli.cli:pandoctools
     - pandoc-filter-arg = pandoctools.pandoc_filter_arg.cli:cli
     - pandoctools-resolve = pandoctools.pandoctools_resolve.resolve:cli
+    - pandoctools-ready = pandoctools.pandoctools_ready:ready
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
