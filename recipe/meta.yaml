@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "1.4.5" %}
+{% set version = "1.4.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e90cbda2d42d89781a0ce4b9fcd074fd964e74524a3c200597939af6840a7f20
+  sha256: fa9995cc27d4a45a76b9886b5f460df4f659822c7f1d3c47cd60549ebb208092
 
 build:
   noarch: python
@@ -17,7 +17,7 @@ build:
     - pandoctools = pandoctools.cli.cli:pandoctools
     - pandoc-filter-arg = pandoctools.pandoc_filter_arg.cli:cli
     - pandoctools-resolve = pandoctools.pandoctools_resolve.resolve:cli
-    - pandoctools-ready = pandoctools.pandoctools_ready:ready
+    - pandoctools-ready = pandoctools.ready.ready:ready
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -40,6 +40,7 @@ requirements:
     - pandoc-crossref
     - pandoc >=2.5
     - numpy
+    - libsass
 
 test:
   imports:
