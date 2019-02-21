@@ -52,6 +52,7 @@ test:
     - pandoctools.cat_md
   commands:
     - pandoctools --help
+    - pandoctools-ready
     - pandoctools-resolve Default
     - |
       echo hello | cat-md - -
