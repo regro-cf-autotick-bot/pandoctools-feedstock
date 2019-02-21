@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "2.6.0.1" %}
+{% set version = "2.6.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5228b2137ac009d0e9912b488d975d29b3fa01fb5751e51d596bd5cd6ca19403
+  sha256: f139f97d9971bcef36df2a57d09ebc3a40743a0241813011eb2bc2653663b90c
 
 build:
   noarch: python
@@ -35,7 +35,7 @@ requirements:
     - knitty >=0.5.0
     - pyppdf >=0.0.10
     - sugartex >=0.1.16
-    - shortcutter >=0.1.18
+    - shortcutter >=0.1.19
     - py-pandoc-crossref >=0.3.4.0.3
     - py-pandoc >=2.6
     - numpy
