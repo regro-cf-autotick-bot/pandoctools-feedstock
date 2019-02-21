@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "1.4.8" %}
+{% set version = "2.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 86dc08c59804d94407d41f9d9033763507cbf5a238249cb1b9f6059e3a3219a1
+  sha256: 82828c5f75a246378210df05dbb5093350675a1690825ca7d55f604f920ce3a9
 
 build:
   noarch: python
@@ -15,7 +15,6 @@ build:
   entry_points:
     - cat-md = pandoctools.cat_md.cat_md:cli
     - pandoctools = pandoctools.cli.cli:pandoctools
-    - pandoc-filter-arg = pandoctools.pandoc_filter_arg.cli:cli
     - pandoctools-resolve = pandoctools.pandoctools_resolve.resolve:cli
     - pandoctools-ready = pandoctools.ready.ready:ready
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
@@ -33,18 +32,30 @@ requirements:
     - notebook
     - jupyter
     - panflute >=1.11.2
-    - knitty >=0.4.19
+    - knitty >=0.5.0
     - pyppdf >=0.0.10
     - sugartex >=0.1.16
-    - shortcutter >=0.1.15
-    - pandoc-crossref
-    - pandoc >=2.5
+    - shortcutter >=0.1.17
+    - py-pandoc-crossref >=0.3.4.0.3
+    - py-pandoc >=2.6
     - numpy
     - libsass
+    - py-mathjax
 
 test:
   imports:
     - pandoctools
+    - pandoctools.ready
+    - pandoctools.shared_vars
+    - pandoctools.pandoctools_resolve
+    - pandoctools.cli
+    - pandoctools.cat_md
+  commands:
+    - pandoctools --help
+    - pandoctools-ready
+    - pandoctools-resolve Default
+    - |
+      echo hello | cat-md - -
 
 about:
   home: https://github.com/kiwi0fruit/pandoctools
