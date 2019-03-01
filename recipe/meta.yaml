@@ -1,5 +1,5 @@
 {% set name = "pandoctools" %}
-{% set version = "2.6.0.5" %}
+{% set version = "2.6.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3b04c104442a14456aa48767467c59c0eb3078cb37e89d0b4c862d5d6c484c4c
+  sha256: b408a28ac3b55daf1f26ca7a080aad4f822559881a965fdcfdc9650321ea3f0a
 
 build:
   noarch: python
@@ -41,6 +41,7 @@ requirements:
     - py-pandoc >=2.6
     - libsass
     - py-mathjax
+    - shutilwhich-cwdpatch >=0.1.0
 
 test:
   imports:
